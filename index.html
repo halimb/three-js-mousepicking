@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://threejs.org/build/three.min.js"></script>
+	<script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+	<canvas id="cnv"></canvas>
+		<div class="panel">
+		  <div class="params">
+		    <label><input id="block" name="arrangement" type="radio" id="block" >block</label>&nbsp;&nbsp;&nbsp;
+		    <label><br>
+		      <input name="arrangement" type="radio" id="random" checked="checked">random</label>
+		    <br>
+		    <label><input type="checkbox" id="lines" onclick="toggleLines(this);" >show rays</label><br>
+		    <label><input type="checkbox" id="rotate" onclick="toggleRot(this);" checked="checked">auto-rotate</label><br>
+		  </div>
+		  <span class="btn" id="reset">Reset</span>
+		</div>
+	<script src="script.js"></script>
+</body>
