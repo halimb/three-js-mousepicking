@@ -191,32 +191,29 @@ function getIntersects(event) {
   return intersects;
 }
 
-function reset() { 
-  block = document.getElementById("block").checked
-  if(block) { 
-    for(var i = 0; i < cubes.length; i++) {
-      cubes[i].material.opacity = 1;
-      cubes[i].material.color = cubeColor;
-      edges[i].material.opacity = 1;
-      edges[i].material.color = edgeColor;
-    }
-    drawCubes(rows, dim, gap);
-    block = true;
-  }
-  else {
-    for(var i = 0; i < cubes.length; i++) {
-      scene.remove()
-      scene.remove(cubes[i]);
-      scene.remove(edges[i]);
-    }
-    cubes = [];
-    edges = [];
-    drawRandom(n, maxDim, scope);
+function clearScene() {
+  for(var i = 0; i < cubes.length; i++) {
+    scene.remove()
+    scene.remove(cubes[i]);
+    scene.remove(edges[i]);
   }
   for(var i = 0; i < lines.length; i++) {
     scene.remove(lines[i]);
   }
+  cubes = [];
+  edges = [];
   lines = [];
+}
+
+function reset() { 
+  clearScene();
+  block = document.getElementById("block").checked
+  if(block) { 
+    drawCubes(rows, dim, gap);
+  }
+  else {
+    drawRandom(n, maxDim, scope);
+  }
   controls.autoRotate = autoRot;
 }
 
