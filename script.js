@@ -24,6 +24,7 @@ window.addEventListener("resize", update);
 canvas.addEventListener("mousedown", onClick);
 document.addEventListener("mouseup", mouseUp);
 
+var radio = document.getElementById("block").checked
 var btn = document.getElementById("reset");
 btn.onclick = reset;
 
@@ -191,8 +192,7 @@ function getIntersects(event) {
   return intersects;
 }
 
-function reset() {
-  var radio = document.getElementById("block").checked; 
+function reset() { 
   if(radio == block) { 
     for(var i = 0; i < cubes.length; i++) {
       cubes[i].material.opacity = 1;
@@ -200,6 +200,8 @@ function reset() {
       edges[i].material.opacity = 1;
       edges[i].material.color = edgeColor;
     }
+    drawCubes(rows, dim, gap);
+    block = true;
   }
   else {
     for(var i = 0; i < cubes.length; i++) {
@@ -208,15 +210,9 @@ function reset() {
       scene.remove(edges[i]);
     }
     cubes = [];
-    edges = []; 
-    if(radio) {
-      drawCubes(rows, dim, gap);
-      block = true;
-    }
-    else {
-      drawRandom(n, maxDim, scope);
-      block = false;
-    }
+    edges = [];
+    drawRandom(n, maxDim, scope);
+    block = false;
   }
   for(var i = 0; i < lines.length; i++) {
     scene.remove(lines[i]);
