@@ -17,6 +17,7 @@ var rows = 4; var dim = 4; var gap = 3;
 var n = 100; var maxDim = 4; var scope = 50;
 
 init();
+reset();
 anim();
 
 window.addEventListener("resize", update);
