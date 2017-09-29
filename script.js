@@ -192,13 +192,9 @@ function getIntersects(event) {
 }
 
 function clearScene() {
-  for(var i = 0; i < cubes.length; i++) {
-    scene.remove()
-    scene.remove(cubes[i]);
-    scene.remove(edges[i]);
-  }
-  for(var i = 0; i < lines.length; i++) {
-    scene.remove(lines[i]);
+  var children = scene.children
+  for(var i = 2; i < children.length; i++) {
+    scene.remove(children[i])
   }
   cubes = [];
   edges = [];
