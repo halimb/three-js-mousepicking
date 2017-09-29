@@ -3,7 +3,6 @@ var edges = [];
 var lines = [];
 var opacity = 0;
 var autoRot = true;
-var block = true;
 var clearColor = new THREE.Color(0xffeb3b);
 var cubeColor = new THREE.Color(0xfff9c4 );
 var hitColor = new THREE.Color(0x000000);
@@ -24,7 +23,7 @@ window.addEventListener("resize", update);
 canvas.addEventListener("mousedown", onClick);
 document.addEventListener("mouseup", mouseUp);
 
-var radio = document.getElementById("block").checked
+var block = document.getElementById("block").checked
 var btn = document.getElementById("reset");
 btn.onclick = reset;
 
@@ -193,7 +192,8 @@ function getIntersects(event) {
 }
 
 function reset() { 
-  if(radio == block) { 
+  block = document.getElementById("block").checked
+  if(block) { 
     for(var i = 0; i < cubes.length; i++) {
       cubes[i].material.opacity = 1;
       cubes[i].material.color = cubeColor;
@@ -212,7 +212,6 @@ function reset() {
     cubes = [];
     edges = [];
     drawRandom(n, maxDim, scope);
-    block = false;
   }
   for(var i = 0; i < lines.length; i++) {
     scene.remove(lines[i]);
